@@ -7,4 +7,4 @@ from flask import render_template
 # Routing
 @app.route("/")
 def index():
-    return "<h1>This is the home page bitches!!!!</h1>"
+    return render_template("index.html", title="Brintey Bitches!!!")
