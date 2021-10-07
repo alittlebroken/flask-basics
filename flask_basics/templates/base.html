@@ -4,63 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <style>
-      :root {
-        font-size: 16px;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      #navigation {
-        display: grid;
-        background-color: black;
-        color: white;
-        margin: 0;
-        padding: 0;
-        grid-template-columns: 1fr 1fr;
-        justify-content: space-between;
-      }
-
-      #nav-items{
-        display: flex;
-        justify-content: space-around;
-        align-items: space-around;
-      }
-
-      #nav-items a {
-        margin-left: 15px;
-        padding: 14px 16px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 2rem;
-      }
-
-      #nav-items a:hover {
-        background-color: white;
-        color: black;
-      }
-
-      #brand {
-        padding: 15px;
-        font-size: 2rem;
-      }
-
-      #brand a {
-        text-decoration: none;
-        color: white;
-      }
-
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
   <body>
     <div id="container" role="presentation">
