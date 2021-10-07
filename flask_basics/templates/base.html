@@ -4,9 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <style>
+      #navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+      }
+      #nav-items{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid blue;
+      }
+    </style>
   </head>
   <body>
-    <div id="contsiner" role="presentation">
+    <div id="container" role="presentation">
+      <header id="header" role="presentational">
+        <nav id="navigation">
+          <img src="">
+
+          <div id="nav-items">
+            {% if session["isLoggedIn"] %}
+              <a href="#">Dashboard</a>
+              <a href="#">Users</a>
+              <a href="#">Profile</a>
+              <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+              <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+          </div>
+        </nav>
+      </header>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div id="messages" role="presentational">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
       {% block content %}{% endblock %}
     </div>
   </body>
