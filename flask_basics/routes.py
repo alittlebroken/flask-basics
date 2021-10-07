@@ -26,7 +26,7 @@ users = [
 
 @app.route("/")
 def index():
-    return render_template("index.html", title="Brintey Bitches!!!")
+    return render_template("index.html", title="Teaching myself Flask Basics")
 
 
 @app.route("/register", methods=['GET', 'POST'])
