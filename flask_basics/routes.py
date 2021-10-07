@@ -95,7 +95,7 @@ def login():
                     session["id"] = item["id"]
                     session["name"] = item["username"]
                     session["isLoggedIn"] = True
-                    return redirect(url_for('user_list'))
+                    return redirect(url_for('index'))
                 else:
                     flash('are you sure that password is correct?')
                     return redirect(url_for('login'))
@@ -114,9 +114,24 @@ def logout():
 
     return redirect(url_for('login'))
 
+
 @app.route("/users")
 def user_list():
     return render_template(
         "userlisting.html",
         title="Current Users",
         users=users)
+
+
+@app.route("/profile")
+def profile():
+
+    for user in users:
+        if user["id"] == session["id"]:
+            current_user = user
+
+    return render_template(
+                            "profile.html",
+                            title="Profile for {}".format(session["name"]),
+                            user=current_user
+                          )

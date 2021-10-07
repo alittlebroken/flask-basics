@@ -5,16 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <style>
+      :root {
+        font-size: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
       #navigation {
         display: grid;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
         grid-template-columns: 1fr 1fr;
         justify-content: space-between;
       }
+
       #nav-items{
         display: flex;
         justify-content: space-between;
-        border: 1px solid blue;
       }
+
+      #nav-items a {
+        margin-left: 15px;
+        padding: 14px 16px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+      }
+
+      #nav-items a:hover {
+        background-color: white;
+        color: black;
+      }
+
     </style>
   </head>
   <body>
@@ -25,12 +58,12 @@
 
           <div id="nav-items">
             {% if session["isLoggedIn"] %}
-              <a href="#">Dashboard</a>
-              <a href="#">Users</a>
-              <a href="#">Profile</a>
+              <a href="{{ url_for('index') }}">Dashboard</a>
+              <a href="{{ url_for('user_list') }}">Users</a>
+              <a href="{{ url_for('profile') }}">Profile</a>
               <a href="{{ url_for('logout') }}">Logout</a>
             {% else %}
-              <a href="{{ url_for('login') }}">Login</a>
+              <a href="{{ url_for('login') }}" style="align-items: flex-end;">Login</a>
             {% endif %}
           </div>
         </nav>
